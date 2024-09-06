@@ -28,8 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(orderForm);
         const order = Object.fromEntries(formData.entries());
 
+        // Log pour vérifier les données avant l'envoi
+        console.log('Données de la commande:', order);
+
         try {
-            const response = await fetch('https://famous-server.onrendercom/command', {
+            const response = await fetch('https://famous-server.onrender.com/command', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
