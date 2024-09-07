@@ -567,30 +567,6 @@
 
     <a id="scroll-to-top" href="#">↑</a>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const scrollToTop = document.getElementById('scroll-to-top');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    scrollToTop.classList.add('visible');
-                } else {
-                    scrollToTop.classList.remove('visible');
-                }
-            });
-
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    item.classList.toggle('active');
-                    const answer = item.querySelector('.faq-answer');
-                    if (item.classList.contains('active')) {
-                        answer.style.display = 'block';
-                    } else {
-                        answer.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
+    <script src=script.js></script>
 </body>
 </html>
