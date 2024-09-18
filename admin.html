@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - FAMOUS-TECH GROUP</title>
+    <link rel="stylesheet" href="admin.css"> <!-- Lien vers ton fichier CSS -->
+</head>
+<body>
+    <div class="container">
+        <h2>Connexion Admin</h2>
+        <form id="loginForm">
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Se connecter</button>
+        </form>
+        <div id="commandes" style="display: none;">
+            <h2>Liste des Commandes</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Service</th>
+                        <th>Détails</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="commandes-table-body">
+                    <!-- Les lignes seront ajoutées ici par JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            if (password === 'famous1609') {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('commandes').style.display = 'block';
+                fetchCommandes();
+            } else {
+                alert('Mot de passe incorrect');
+            }
+        });
+
+        function fetchCommandes() {
+            fetch('admin.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('commandes-table-body');
+                    data.forEach(commande => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${commande.id}</td>
+                            <td>${commande.nom}</td>
+                            <td>${commande.email}</td>
+                            <td>${commande.service}</td>
+                            <td>${commande.details}</td>
+                            <td>${commande.date_commande}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Erreur:', error));
+        }
+    </script>
+</body>
+</html>
