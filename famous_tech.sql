@@ -1,0 +1,12 @@
+CREATE DATABASE famous_tech;
+
+USE famous_tech;
+
+CREATE TABLE commandes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    service VARCHAR(255) NOT NULL,
+    details TEXT NOT NULL,
+    date_commande TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
