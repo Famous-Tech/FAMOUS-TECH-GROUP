@@ -26,24 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         const formData = new FormData(orderForm);
-        const order = Object.fromEntries(formData.entries());
-
-        // Log pour vérifier les données avant l'envoi
-        console.log('Données de la commande:', order);
 
         try {
-            const response = await fetch('https://famous-server.onrender.com/command', {
+            const response = await fetch('submit.php', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization Bearer': '1609'
-                },
-                body: JSON.stringify(order)
+                body: new URLSearchParams(formData)
             });
 
             if (response.ok) {
-                alert('Commande soumise avec succès!');
-                orderForm.reset();
+                // Rediriger vers la page merci.html en cas de succès
+                window.location.href = 'merci.html';
             } else {
                 alert('Erreur lors de la soumission de la commande.');
             }
