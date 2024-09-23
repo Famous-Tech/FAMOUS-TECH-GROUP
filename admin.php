@@ -4,13 +4,14 @@ include 'config.php';
 
 // Requête pour récupérer les commandes
 $sql = "SELECT * FROM commandes";
-$result = $conn->query($sql);
+$stmt = $conn->prepare($sql);
+$stmt->execute();
 
 $data = [];
 
 // Vérification du résultat
-if ($result && $result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
+if ($stmt->rowCount() > 0) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $data[] = [
             'id' => htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8'),
             'nom' => htmlspecialchars($row['nom'], ENT_QUOTES, 'UTF-8'),
@@ -23,7 +24,7 @@ if ($result && $result->num_rows > 0) {
 }
 
 // Fermer la connexion à la base de données
-$conn->close();
+$conn = null;
 
 // Renvoyer les données au format JSON
 header('Content-Type: application/json');
