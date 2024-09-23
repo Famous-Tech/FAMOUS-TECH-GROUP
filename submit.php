@@ -5,7 +5,7 @@ include 'config.php';
 // Lire le contenu du fichier SQL
 $sql = file_get_contents('famous_tech.sql');
 
-// Exécuter le script SQL
+// Exécuter le script SQL✅
 try {
     $conn->exec($sql);
     echo "Script SQL exécuté avec succès.";
