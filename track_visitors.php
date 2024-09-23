@@ -20,4 +20,7 @@ file_put_contents('visitors.json', $json_visitor_data . PHP_EOL, FILE_APPEND);
 
 // Fermer la connexion à la base de données
 $conn = null;
+
+// Renvoyer une réponse pour confirmer l'enregistrement
+echo "Visite enregistrée avec succès.";
 ?>
