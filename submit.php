@@ -35,7 +35,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: merci.html");
             exit(); // Assurer que le script s'arrête après la redirection
         } else {
-            echo "Erreur : " . $stmt->errorInfo()[2];
+            // Enregistrer la commande en format JSON si l'enregistrement dans la base de données a échoué
+            $commande = [
+                'nom' => $nom,
+                'email' => $email,
+                'service' => $service,
+                'details' => $details,
+                'date_commande' => date('Y-m-d H:i:s')
+            ];
+            $json_commande = json_encode($commande);
+            file_put_contents('commandes.json', $json_commande . PHP_EOL, FILE_APPEND);
+
+            // Redirection vers la page merci.html après succès
+            header("Location: merci.html");
+            exit(); // Assurer que le script s'arrête après la redirection
         }
     } else {
         echo "Entrées invalides. Veuillez vérifier vos informations.";
