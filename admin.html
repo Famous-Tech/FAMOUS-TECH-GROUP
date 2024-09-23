@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - FAMOUS-TECH GROUP</title>
-    <link rel="stylesheet" href="admin.css"> <!-- Lien vers ton fichier CSS -->
+    <link rel="stylesheet" href="admin.css">
+    <link rel="icon" href="images/favicon.ico">
 </head>
 <body>
     <div class="container">
@@ -32,6 +33,21 @@
                 </tbody>
             </table>
         </div>
+        <div id="stats" style="display: none;">
+            <h2>Statistiques des Visiteurs</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>Localisation</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="visitors-table-body">
+                    <!-- Les lignes seront ajoutées ici par JavaScript -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script>
@@ -41,7 +57,9 @@
             if (password === 'famous1609') {
                 document.getElementById('loginForm').style.display = 'none';
                 document.getElementById('commandes').style.display = 'block';
+                document.getElementById('stats').style.display = 'block';
                 fetchCommandes();
+                fetchVisitors();
             } else {
                 alert('Mot de passe incorrect');
             }
@@ -52,7 +70,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const tableBody = document.getElementById('commandes-table-body');
-                    data.forEach(commande => {
+                    data.commandes.forEach(commande => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
                             <td>${commande.id}</td>
@@ -61,6 +79,24 @@
                             <td>${commande.service}</td>
                             <td>${commande.details}</td>
                             <td>${commande.date_commande}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Erreur:', error));
+        }
+
+        function fetchVisitors() {
+            fetch('admin.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('visitors-table-body');
+                    data.visitors.forEach(visitor => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${visitor.ip}</td>
+                            <td>${visitor.location}</td>
+                            <td>${visitor.date}</td>
                         `;
                         tableBody.appendChild(row);
                     });
