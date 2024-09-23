@@ -1,15 +1,27 @@
 <?php
-// Détails de connexion à la base de données
-$host = 'mysql.hostinger.com';  // Use nom serveur hébergeur la baw la sa se pou hostiger
-$dbname = 'famoustechdb';  // Nom de ta base de données
-$username = 'tech_famous';  // use nom d'utilisateur hébergeur la
-$password = 'Habby_LordInferfo999&@^#:@&,@,';  // Mot de passe de l'utilisateur
+// Charger les variables d'environnement
+$dotenv = parse_ini_file('.env');
+foreach ($dotenv as $key => $value) {
+    putenv("$key=$value");
+}
 
-// Créer une connexion à la base de données en utilisant MySQLi
-$conn = new mysqli($host, $username, $password, $dbname);
+// Détails de connexion à la base de données PostgreSQL
+$databaseUrl = getenv('DATABASE_URL');
+$url = parse_url($databaseUrl);
 
-// Vérifier la connexion
-if ($conn->connect_error) {
-    die("Échec de la connexion : " . $conn->connect_error);
+$host = $url['host'];
+$dbname = ltrim($url['path'], '/');
+$username = $url['user'];
+$password = $url['pass'];
+$port = $url['port'];
+$sslmode = 'require';
+
+// Créer une connexion à la base de données en utilisant PDO
+try {
+    $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname;user=$username;password=$password;sslmode=$sslmode");
+    // Configurer PDO pour lancer des exceptions en cas d'erreur
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Échec de la connexion : " . $e->getMessage());
 }
 ?>
