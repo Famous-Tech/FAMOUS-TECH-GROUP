@@ -26,15 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         const formData = new FormData(orderForm);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            service: formData.get('service'),
+            details: formData.get('details')
+        };
 
         try {
-            const response = await fetch('submit.php', {
+            const response = await fetch('/api/submit', {
                 method: 'POST',
-                body: new URLSearchParams(formData)
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             });
 
             if (response.ok) {
-                // Rediriger vers la page merci.html en cas de succès
                 window.location.href = 'merci.html';
             } else {
                 alert('Erreur lors de la soumission de la commande.');
