@@ -66,7 +66,7 @@
         });
 
         function fetchCommandes() {
-            fetch('admin.php')
+            fetch('/api/admin')
                 .then(response => response.json())
                 .then(data => {
                     const tableBody = document.getElementById('commandes-table-body');
@@ -87,7 +87,7 @@
         }
 
         function fetchVisitors() {
-            fetch('admin.php')
+            fetch('/api/admin')
                 .then(response => response.json())
                 .then(data => {
                     const tableBody = document.getElementById('visitors-table-body');
