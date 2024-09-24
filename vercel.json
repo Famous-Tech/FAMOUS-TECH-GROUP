@@ -12,6 +12,10 @@
         {
             "src": "track_visitors.js",
             "use": "@vercel/node"
+        },
+        {
+            "src": "public/**",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
@@ -26,6 +30,10 @@
         {
             "src": "/api/track_visitors",
             "dest": "/track_visitors.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/public/$1"
         }
     ]
 }
