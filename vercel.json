@@ -1,0 +1,31 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "submit.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "admin.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "track_visitors.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/submit",
+            "dest": "/submit.js"
+        },
+        {
+            "src": "/api/admin",
+            "dest": "/admin.js"
+        },
+        {
+            "src": "/api/track_visitors",
+            "dest": "/track_visitors.js"
+        }
+    ]
+}
