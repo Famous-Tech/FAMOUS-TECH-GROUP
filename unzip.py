@@ -1,6 +1,7 @@
 import zipfile
 import os
 import shutil
+import subprocess
 
 # Recherche du fichier ZIP
 zip_file_path = next((f for f in os.listdir(".") if f.endswith(".zip")), None)
@@ -28,3 +29,18 @@ else:
     with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
         zip_ref.extractall(".")
     print("Décompression réussie !")
+
+    # Créer un dépôt Git (si nécessaire)
+    if not os.path.isdir(".git"):
+        subprocess.run(["git", "init"], check=True)
+        print("Dépôt Git initialisé.")
+
+    # Ajouter les fichiers et committer
+    subprocess.run(["git", "add", "."], check=True)
+    subprocess.run(["git", "commit", "-m", "Décompression du fichier ZIP et nettoyage"], check=True)
+    print("Modifications ajoutées et commit effectués.")
+
+    # Configurer l'origine distante et pousser les modifications
+    subprocess.run(["git", "remote", "add", "origin", "https://github.com/Famous-Tech/FAMOUS-TECH-GROUP.git"], check=True)
+    subprocess.run(["git", "push", "-u", "origin", "main"], check=True)
+    print("Modifications poussées vers le dépôt distant.")
