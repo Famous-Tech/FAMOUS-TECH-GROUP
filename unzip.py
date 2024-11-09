@@ -6,7 +6,7 @@ import shutil
 zip_file_path = next((f for f in os.listdir(".") if f.endswith(".zip")), None)
 
 # Liste des fichiers à conserver
-keep_files = ["unzip.py"]
+keep_files = ["unzip.py, FAMOUS-TECH-GROUP-main_125316.zip"]
 
 def clean_directory(directory):
     for item in os.listdir(directory):
