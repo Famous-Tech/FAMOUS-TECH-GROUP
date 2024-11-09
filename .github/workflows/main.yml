@@ -28,12 +28,12 @@ jobs:
           ls -la
 
       - name: Run unzip script
-        run: python unzip.py
+        run: python unzip.py 
 
       - name: Commit and push changes
         run: |
-          git config  user.name "GitHub Actions"
-          git config  user.email "actions@github.com"
+          git config -- local user.name "GitHub Actions"
+          git config -- local user.email "actions@github.com"
           git add .
           git commit -m "Décompression du fichier ZIP et nettoyage"
           git push
