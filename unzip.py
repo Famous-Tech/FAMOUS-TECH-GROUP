@@ -2,32 +2,29 @@ import zipfile
 import os
 import shutil
 
-# Nom du fichier ZIP et répertoire de sortie
-zip_file_path = "./FAMOUS-TECH-GROUP-main_125316.zip"  # Nom de votre fichier ZIP
-output_dir = "."  # Répertoire de sortie, ici la base du dépôt
+# Recherche du fichier ZIP
+zip_file_path = next((f for f in os.listdir(".") if f.endswith(".zip")), None)
 
-# Liste des fichiers à conserver (ici uniquement ce script)
+# Liste des fichiers à conserver
 keep_files = ["unzip.py"]
 
-# Fonction pour supprimer tous les fichiers sauf ceux à conserver
 def clean_directory(directory):
     for item in os.listdir(directory):
         if item not in keep_files:
             item_path = os.path.join(directory, item)
             if os.path.isdir(item_path):
-                shutil.rmtree(item_path)  # Suppression récursive des dossiers non vides
+                shutil.rmtree(item_path)
             else:
                 os.remove(item_path)
 
-# Vérification de l'existence du fichier ZIP
-if not os.path.exists(zip_file_path):
-    print("Le fichier ZIP est introuvable !")
+if not zip_file_path:
+    print("Aucun fichier ZIP trouvé !")
 else:
     # Nettoyage du répertoire
-    clean_directory(output_dir)
+    clean_directory(".")
     print("Répertoire nettoyé avec succès !")
 
     # Décompression du fichier ZIP
     with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-        zip_ref.extractall(output_dir)
+        zip_ref.extractall(".")
     print("Décompression réussie !")
