@@ -32,10 +32,18 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config -- local user.name "GitHub Actions"
-          git config -- local user.email "actions@github.com"
+          # Se placer dans le bon répertoire Git
+          cd $GITHUB_WORKSPACE
+          
+          # Configurer les informations Git
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          
+          # Ajouter et committer les fichiers
           git add .
           git commit -m "Décompression du fichier ZIP et nettoyage"
+          
+          # Pousser les changements
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
