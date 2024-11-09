@@ -33,7 +33,12 @@ else:
     subprocess.run(["git", "config", "--local", "user.email", "actions@github.com"], check=True)
 
     subprocess.run(["git", "add", "."], check=True)
-    subprocess.run(["git", "commit", "-m", "Décompression du fichier ZIP et nettoyage"], check=True)
-    subprocess.run(["git", "push"], check=True)
+
+    try:
+        subprocess.run(["git", "commit", "-m", "Décompression du fichier ZIP et nettoyage"], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Erreur lors du commit: {e}")
+    
+    subprocess.run(["git", "push", "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main"], check=True)
 
     print("Git push effectué avec succès !")
