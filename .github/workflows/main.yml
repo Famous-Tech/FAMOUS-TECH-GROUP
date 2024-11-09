@@ -1,53 +1,42 @@
-name: Unzip and Commit
+name: extraction de mes codes
 
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
-  unzip_job:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout le code
+        uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Installer Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.12'
 
-      - name: Install dependencies
+      - name: Installer les dépendances
         run: |
           python -m pip install --upgrade pip
+          pip install shutil
 
-      - name: List files in repository
+      - name: Exécuter le script Python
         run: |
-          echo "Listing files in the current directory"
-          ls -la
+          python unzip.py
 
-      - name: Run unzip script
-        run: python unzip.py
-
-      - name: Commit and push changes
+      - name: Configurer Git
         run: |
-          cd $GITHUB_WORKSPACE
-          
-          if [ ! -d ".git" ]; then
-            git init 
-            git branch -m main
-            git remote add origin https://github.com/Famous-Tech/FAMOUS-TECH-GROUP.git
-          fi
-          
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
-          
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Famous-Tech/FAMOUS-TECH-GROUP.git
 
+      - name: Ajouter et commit les modifications
+        run: |
           git add .
-          git commit -m "Décompression du fichier ZIP et nettoyage"
-          
-          git push origin main  
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git commit -m "Décompression et nettoyage via GitHub Actions"
+        
+      - name: Pousser les changements
+        run: |
+          git push
