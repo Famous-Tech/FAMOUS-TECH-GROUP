@@ -1,4 +1,4 @@
-name: extraction de mes codes
+name: Décompression et Push
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - name: Installer Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.12'
 
       - name: Installer les dépendances
         run: |
@@ -26,16 +26,11 @@ jobs:
         run: |
           python unzip.py
 
-      - name: Configurer Git
-        run: |
-          git config --local user.name "GitHub Actions"
-          git config --local user.email "actions@github.com"
-
       - name: Ajouter et commit les modifications
         run: |
           git add .
-          git commit -m "Décompression et nettoyage via GitHub Actions"
-        
+          git commit -m "Décompression et nettoyage via GitHub Actions" || echo "Aucun changement à commettre"
+
       - name: Pousser les changements
         run: |
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
