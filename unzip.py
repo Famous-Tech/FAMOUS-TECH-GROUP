@@ -3,10 +3,8 @@ import os
 import shutil
 import subprocess
 
-# Recherche du fichier ZIP
 zip_file_path = next((f for f in os.listdir(".") if f.endswith(".zip")), None)
 
-# Liste des fichiers à conserver
 keep_files = ["unzip.py", "FAMOUS-TECH-GROUP-main_125316.zip"]
 
 def clean_directory(directory):
@@ -21,26 +19,21 @@ def clean_directory(directory):
 if not zip_file_path:
     print("Aucun fichier ZIP trouvé !")
 else:
-    # Nettoyage du répertoire
     clean_directory(".")
     print("Répertoire nettoyé avec succès !")
 
-    # Décompression du fichier ZIP
     with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
         zip_ref.extractall(".")
     print("Décompression réussie !")
 
-    # Créer un dépôt Git (si nécessaire)
-    if not os.path.isdir(".git"):
-        subprocess.run(["git", "init"], check=True)
-        print("Dépôt Git initialisé.")
+    subprocess.run(["git", "init"], check=True)
 
-    # Ajouter les fichiers et committer
+    # Configurer les informations Git
+    subprocess.run(["git", "config", "--local", "user.name", "GitHub Actions"], check=True)
+    subprocess.run(["git", "config", "--local", "user.email", "actions@github.com"], check=True)
+
     subprocess.run(["git", "add", "."], check=True)
     subprocess.run(["git", "commit", "-m", "Décompression du fichier ZIP et nettoyage"], check=True)
-    print("Modifications ajoutées et commit effectués.")
+    subprocess.run(["git", "push"], check=True)
 
-    # Configurer l'origine distante et pousser les modifications
-    subprocess.run(["git", "remote", "add", "origin", "https://github.com/Famous-Tech/FAMOUS-TECH-GROUP.git"], check=True)
-    subprocess.run(["git", "push", "-u", "origin", "main"], check=True)
-    print("Modifications poussées vers le dépôt distant.")
+    print("Git push effectué avec succès !")
