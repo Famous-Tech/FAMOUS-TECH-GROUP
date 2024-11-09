@@ -3,7 +3,7 @@ name: Unzip and Commit
 on:
   push:
     branches:
-      - main
+      - main  
 
 jobs:
   unzip_job:
@@ -28,28 +28,26 @@ jobs:
           ls -la
 
       - name: Run unzip script
-        run: python unzip.py 
+        run: python unzip.py
 
       - name: Commit and push changes
         run: |
-          # Assurer que nous sommes dans le bon répertoire Git
           cd $GITHUB_WORKSPACE
           
-          # Initialiser un dépôt Git si nécessaire
           if [ ! -d ".git" ]; then
             git init
-            git remote add origin https://github.com/${{ github.repository }}.git
+            git remote add origin https://github.com/Famous-Tech/FAMOUS-TECH-GROUP.git
           fi
           
-          # Configurer les informations Git
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
           
-          # Ajouter et committer les fichiers
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Famous-Tech/FAMOUS-TECH-GROUP.git
+
           git add .
           git commit -m "Décompression du fichier ZIP et nettoyage"
-          
-          # Pousser les changements
-          git push
+
+          # Pousser sur la branche main
+          git push origin main  # Assure-toi de pousser sur la branche main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
