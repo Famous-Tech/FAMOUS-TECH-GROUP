@@ -1,7 +1,12 @@
 {
-  "name": "FAMOUS-TECH-GROUP",
-  "version": "3.2.5",
+  "name": "unzip-repo",
+  "version": "1.0.0",
+  "description": "Script pour décompresser un fichier ZIP",
+  "main": "unzip.js",
+  "scripts": {
+    "unzip": "node unzip.js"
+  },
   "dependencies": {
-    "pg": "^8.7.1"
+    "adm-zip": "^0.5.9"
   }
 }
