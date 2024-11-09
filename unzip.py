@@ -2,7 +2,7 @@ import zipfile
 import os
 
 # Nom du fichier ZIP et répertoire de sortie
-zip_file_path = "archive.zip"  # Nom de votre fichier ZIP
+zip_file_path = "FAMOUS-TECH-GROUP-main.zip"  # Nom de votre fichier ZIP
 output_dir = "."  # Répertoire de sortie, ici la base du dépôt
 
 # Liste des fichiers à conserver (ici uniquement ce script)
