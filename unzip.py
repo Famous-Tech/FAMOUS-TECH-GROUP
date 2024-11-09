@@ -1,5 +1,6 @@
 import zipfile
 import os
+import shutil
 
 # Nom du fichier ZIP et répertoire de sortie
 zip_file_path = "FAMOUS-TECH-GROUP-main_125316.zip"  # Nom de votre fichier ZIP
@@ -14,7 +15,7 @@ def clean_directory(directory):
         if item not in keep_files:
             item_path = os.path.join(directory, item)
             if os.path.isdir(item_path):
-                os.rmdir(item_path)
+                shutil.rmtree(item_path)  # Suppression récursive des dossiers non vides
             else:
                 os.remove(item_path)
 
