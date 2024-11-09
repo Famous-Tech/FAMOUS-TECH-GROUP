@@ -32,8 +32,14 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          # Se placer dans le bon répertoire Git
+          # Assurer que nous sommes dans le bon répertoire Git
           cd $GITHUB_WORKSPACE
+          
+          # Initialiser un dépôt Git si nécessaire
+          if [ ! -d ".git" ]; then
+            git init
+            git remote add origin https://github.com/${{ github.repository }}.git
+          fi
           
           # Configurer les informations Git
           git config --local user.name "GitHub Actions"
