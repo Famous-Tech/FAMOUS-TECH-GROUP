@@ -36,7 +36,7 @@ jobs:
           
           if [ ! -d ".git" ]; then
             git init 
-            git branch main
+            git branch -m main
             git remote add origin https://github.com/Famous-Tech/FAMOUS-TECH-GROUP.git
           fi
           
