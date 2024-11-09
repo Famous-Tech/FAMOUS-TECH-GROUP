@@ -35,7 +35,8 @@ jobs:
           cd $GITHUB_WORKSPACE
           
           if [ ! -d ".git" ]; then
-            git init
+            git init 
+            git branch main
             git remote add origin https://github.com/Famous-Tech/FAMOUS-TECH-GROUP.git
           fi
           
@@ -46,8 +47,7 @@ jobs:
 
           git add .
           git commit -m "Décompression du fichier ZIP et nettoyage"
-
-          # Pousser sur la branche main
-          git push origin main  # Assure-toi de pousser sur la branche main
+          
+          git push origin main  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
