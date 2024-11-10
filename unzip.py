@@ -38,7 +38,8 @@ else:
         subprocess.run(["git", "commit", "-m", "Décompression du fichier ZIP et nettoyage"], check=True)
     except subprocess.CalledProcessError as e:
         print(f"Erreur lors du commit: {e}")
-    
-    subprocess.run(["git", "push", "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main"], check=True)
 
-    print("Git push effectué avec succès !")
+    # Utilisation de l'option --set-upstream pour configurer le suivi de la branche main
+    subprocess.run(["git", "push", "--set-upstream", "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}", "HEAD:main"], check=True)
+
+    print("Git push effectué avec succès !"
