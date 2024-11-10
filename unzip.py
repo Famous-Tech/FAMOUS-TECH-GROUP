@@ -42,4 +42,4 @@ else:
     # Utilisation de l'option --set-upstream pour configurer le suivi de la branche main
     subprocess.run(["git", "push", "--set-upstream", "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}", "HEAD:main"], check=True)
 
-    print("Git push effectué avec succès !"
+    print("Git push effectué avec succès !")
