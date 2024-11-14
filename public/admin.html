@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,6 +74,118 @@
                     data.commandes.forEach(commande => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - FAMOUS-TECH GROUP</title>
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .dashboard {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .section {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        flex: 1;
+      }
+      .profile {
+        text-align: center;
+      }
+      .profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+      .profile h2 {
+        margin: 10px 0;
+      }
+      .profile p {
+        color: #777;
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table th, .table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      .table th {
+        background-color: #f4f4f4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container dashboard">
+      <div class="section profile">
+        <img src="images/profile.jpg" alt="Profile Picture" />
+        <h2>Admin Name</h2>
+        <p>Role: Super Admin</p>
+      </div>
+      <div class="section commandes">
+        <h3>Liste des Commandes</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>Service</th>
+              <th>Détails</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="commandes-table-body">
+            <!-- Les lignes seront ajoutées ici par JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      <div class="section stats">
+        <h3>Statistiques des Visiteurs</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>IP</th>
+              <th>Localisation</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="visitors-table-body">
+            <!-- Les lignes seront ajoutées ici par JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      function fetchCommandes() {
+        fetch("/api/admins")
+          .then((response) => response.json())
+          .then((data) => {
+            const tableBody = document.getElementById("commandes-table-body");
+            tableBody.innerHTML = ""; // Effacer les anciennes données
+            data.commandes.forEach((commande) => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+>>>>>>> f5afb80 (Ajout et modification de fichiers)
                             <td>${commande.id}</td>
                             <td>${commande.nom}</td>
                             <td>${commande.email}</td>
@@ -80,6 +193,7 @@
                             <td>${commande.details}</td>
                             <td>${commande.date_commande}</td>
                         `;
+<<<<<<< HEAD
                         tableBody.appendChild(row);
                     });
                 })
@@ -94,10 +208,28 @@
                     data.visitors.forEach(visitor => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
+=======
+              tableBody.appendChild(row);
+            });
+          })
+          .catch((error) => console.error("Erreur lors de la récupération des commandes:", error));
+      }
+
+      function fetchVisitors() {
+        fetch("/api/admins")
+          .then((response) => response.json())
+          .then((data) => {
+            const tableBody = document.getElementById("visitors-table-body");
+            tableBody.innerHTML = ""; // Effacer les anciennes données
+            data.visitors.forEach((visitor) => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+>>>>>>> f5afb80 (Ajout et modification de fichiers)
                             <td>${visitor.ip}</td>
                             <td>${visitor.location}</td>
                             <td>${visitor.date}</td>
                         `;
+<<<<<<< HEAD
                         tableBody.appendChild(row);
                     });
                 })
@@ -106,3 +238,17 @@
     </script>
 </body>
 </html>
+=======
+              tableBody.appendChild(row);
+            });
+          })
+          .catch((error) => console.error("Erreur lors de la récupération des visiteurs:", error));
+      }
+
+      // Appeler les fonctions pour récupérer les données lors du chargement de la page
+      fetchCommandes();
+      fetchVisitors();
+    </script>
+  </body>
+</html>
+>>>>>>> f5afb80 (Ajout et modification de fichiers)

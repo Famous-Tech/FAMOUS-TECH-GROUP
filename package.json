@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "unzip-repo",
   "version": "1.0.0",
   "description": "Script pour décompresser un fichier ZIP",
@@ -10,3 +11,32 @@
     "adm-zip": "^0.5.9"
   }
 }
+=======
+  "name": "famous-tech-group",
+  "version": "4.0.0",
+  "description": "Le site web de Famous-tech-Group, utilisant des modules et des dependances robustes comme : express,helmet, pg, body-parser, joi etc... Le tout pour etre un web-app robuste et complet il a aussi des fichiers statiques HTML et des feuilles de styles css.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "jest",
+    "tables": "node create.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.5.1",
+    "helmet": "^4.6.0",
+    "joi": "^17.4.2",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.22",
+    "supertest": "^6.1.3"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
+>>>>>>> f5afb80 (Ajout et modification de fichiers)

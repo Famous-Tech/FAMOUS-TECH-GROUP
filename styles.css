@@ -105,8 +105,18 @@ nav ul li a:hover::after {
 }
 
 @keyframes zoomBackground {
+<<<<<<< HEAD
     0% { transform: scale(1); }
     100% { transform: scale(1.1); }
+=======
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+>>>>>>> f5afb80 (Ajout et modification de fichiers)
 }
 
 .hero-content {
@@ -119,15 +129,33 @@ nav ul li a:hover::after {
     font-weight: 700;
     margin-bottom: 1rem;
     background: linear-gradient(to right, #FF00FF, #00FFFF);
+<<<<<<< HEAD
     -webkit-background-clip: text;
+=======
+    background-clip: text;
+>>>>>>> f5afb80 (Ajout et modification de fichiers)
     -webkit-text-fill-color: transparent;
     animation: gradientText 5s ease infinite;
 }
 
 @keyframes gradientText {
+<<<<<<< HEAD
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+=======
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+>>>>>>> f5afb80 (Ajout et modification de fichiers)
 }
 
 .hero p {
@@ -457,4 +485,8 @@ footer {
     form {
         padding: 2rem;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f5afb80 (Ajout et modification de fichiers)

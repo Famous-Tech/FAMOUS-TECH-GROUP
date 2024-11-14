@@ -1,0 +1,50 @@
+[
+    {
+      "ip": "::ffff:127.0.0.1",
+      "location": {
+        "success": false,
+        "error": {
+          "code": 101,
+          "type": "invalid_access_key",
+          "info": "You have not supplied a valid API Access Key. [Technical Support: support@apilayer.com]"
+        }
+      },
+      "date": "2024-11-03T18:37:55.230Z"
+    },
+    {
+      "ip": "::ffff:127.0.0.1",
+      "location": {
+        "success": false,
+        "error": {
+          "code": 101,
+          "type": "invalid_access_key",
+          "info": "You have not supplied a valid API Access Key. [Technical Support: support@apilayer.com]"
+        }
+      },
+      "date": "2024-11-03T18:40:11.549Z"
+    },
+    {
+      "ip": "::ffff:127.0.0.1",
+      "location": {
+        "success": false,
+        "error": {
+          "code": 101,
+          "type": "invalid_access_key",
+          "info": "You have not supplied a valid API Access Key. [Technical Support: support@apilayer.com]"
+        }
+      },
+      "date": "2024-11-03T23:44:07.554Z"
+    },
+    {
+      "ip": "::ffff:127.0.0.1",
+      "location": {
+        "success": false,
+        "error": {
+          "code": 101,
+          "type": "invalid_access_key",
+          "info": "You have not supplied a valid API Access Key. [Technical Support: support@apilayer.com]"
+        }
+      },
+      "date": "2024-11-06T01:29:42.209Z"
+    }
+  ]

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur 404 - FAMOUS-TECH GROUP</title>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=66ec5b4bd43faf001a475e12&product=privacy-policy-generator&source=platform" async="async"></script>
+    <meta name="description" content="La page que vous recherchez n'a pas été trouvée.">
+    <meta name="robots" content="noindex, follow">
+    <meta property="og:title" content="Erreur 404 - FAMOUS-TECH GROUP">
+    <meta property="og:description" content="La page que vous recherchez n'a pas été trouvée.">
+    <meta property="og:image" content="https://famous-tech-group.vercel.app/images/og-image.jpg">
+    <meta property="og:url" content="https://famous-tech-group.vercel.app/">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Sites web, site à bas prix, Haïti, développeurs Haïtiens, FAMOUS-TECH,  Acheter un site, développeur Haiti, Haïti, Créole, Site haïtiens, Création de sites à bas prix">
+    <meta name="author" content="FAMOUS-TECH">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #6200EA;
+            --secondary-color: #3700B3;
+            --accent-color: #03DAC6;
+            --background-color: #121212;
+            --text-color: #FFFFFF;
+            --card-bg-color: #1E1E1E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/api/placeholder/1200/800') no-repeat center center/cover;
+            opacity: 0.2;
+            animation: zoomBackground 20s infinite alternate;
+        }
+
+        @keyframes zoomBackground {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #FF00FF, #00FFFF);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 5s ease infinite;
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: #0A0A0A;
+            color: #888;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        #scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateY(100px);
+        }
+
+        #scroll-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <h1>FAMOUS-TECH GROUP</h1>
+            <ul>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="command.html">Commander</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content container">
+                <h1>Erreur 404</h1>
+                <p>La page que vous recherchez n'a pas été trouvée.</p>
+                <a href="/" class="cta-button">Retour à l'accueil</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FAMOUS-TECH GROUP. Tous droits réservés.</p>
+            <a href="/faq">FAQ</a>
+            <a href="/Politique-de-confidentialite">Politique de confidentialité</a>
+        </div>
+    </footer>
+
+    <a id="scroll-to-top" href="#">↑</a>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll-to-top functionality
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            const rootElement = document.documentElement;
+
+            function handleScroll() {
+                const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+                if (rootElement.scrollTop / scrollTotal > 0.1) { // If scrolled 10% of the page
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            }
+
+            function scrollToTop() {
+                rootElement.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            if (scrollToTopBtn) {
+                scrollToTopBtn.addEventListener('click', scrollToTop);
+            }
+            document.addEventListener('scroll', handleScroll);
+        });
+    </script>
+</body>
+</html>
