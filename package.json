@@ -1,20 +1,7 @@
 {
-<<<<<<< HEAD
-  "name": "unzip-repo",
-  "version": "1.0.0",
-  "description": "Script pour décompresser un fichier ZIP",
-  "main": "unzip.js",
-  "scripts": {
-    "unzip": "node unzip.js"
-  },
-  "dependencies": {
-    "adm-zip": "^0.5.9"
-  }
-}
-=======
   "name": "famous-tech-group",
   "version": "4.0.0",
-  "description": "Le site web de Famous-tech-Group, utilisant des modules et des dependances robustes comme : express,helmet, pg, body-parser, joi etc... Le tout pour etre un web-app robuste et complet il a aussi des fichiers statiques HTML et des feuilles de styles css.",
+  "description": "Le site web de Famous-tech-Group, utilisant des modules et des dépendances robustes comme : express, helmet, pg, body-parser, joi etc... Le tout pour être un web-app robuste et complet, il a aussi des fichiers statiques HTML et des feuilles de styles CSS.",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -37,6 +24,27 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "web-app",
+    "express",
+    "helmet",
+    "pg",
+    "joi",
+    "static-files",
+    "css"
+  ],
+  "author": "FAMOUS-TECH <famoustechht@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Famous-Tech/FAMOUS-TECH-GROUP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Famous-Tech/FAMOUS-TECH-GROUP/issues"
+  },
+  "homepage": "https://github.com/Famous-Tech/FAMOUS-TECH-GROUP #readme"
   }
-}
->>>>>>> f5afb80 (Ajout et modification de fichiers)
