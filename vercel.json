@@ -1,39 +1,12 @@
 {
-  "version": 2,
-  "builds": [
+  "redirects": [
     {
-      "src": "submit.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "admin.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "track_visitors.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/**",
-      "use": "@vercel/static"
+      "source": "/(.*)",
+      "destination": "https://famous-tech-group.onrender.com",
+      "permanent": true
     }
   ],
-  "routes": [
-    {
-      "src": "/api/submit",
-      "dest": "/submit.js"
-    },
-    {
-      "src": "/api/admin",
-      "dest": "/admin.js"
-    },
-    {
-      "src": "/api/track_visitors",
-      "dest": "/track_visitors.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/public/$1"
-    }
-  ]
+  "static": {
+    "directory": "public"
+  }
 }
