@@ -6,4 +6,8 @@ CREATE TABLE IF NOT EXISTS commandes (
     service VARCHAR(255) NOT NULL,
     details TEXT NOT NULL,
     date_commande TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+<<<<<<< HEAD
 );
+=======
+);
+>>>>>>> f5afb80 (Ajout et modification de fichiers)

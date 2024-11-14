@@ -216,9 +216,15 @@
         <nav class="container">
             <h1>FAMOUS-TECH GROUP</h1>
             <ul>
+<<<<<<< HEAD
                 <li><a href="services.html#services">Services</a></li>
                 <li><a href="#order">Commander</a></li>
                 <li><a href="faq.html#faq">FAQ</a></li>
+=======
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/commander">Commander</a></li>
+                <li><a href="/faq">FAQ</a></li>
+>>>>>>> f5afb80 (Ajout et modification de fichiers)
             </ul>
         </nav>
     </header>
@@ -251,6 +257,12 @@
                     </div>
                     <button type="submit">Soumettre votre Commande</button>
                 </form>
+<<<<<<< HEAD
+=======
+                <p style="text-align: center; margin-top: 20px;">
+                    <a id="dashboardLink" href="#">Déjà commandé ? Voir votre commande</a>
+                </p>
+>>>>>>> f5afb80 (Ajout et modification de fichiers)
             </div>
         </section>
     </main>
@@ -264,5 +276,52 @@
     <a id="scroll-to-top" href="#">↑</a>
 
     <script src="script.js"></script>
+<<<<<<< HEAD
 </body>
 </html>
+=======
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderForm = document.getElementById('orderForm');
+            const dashboardLink = document.getElementById('dashboardLink');
+
+            orderForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(orderForm);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    service: formData.get('service'),
+                    details: formData.get('details')
+                };
+
+                try {
+                    const response = await fetch('/api/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        const accessKey = result.accessKey;
+                        dashboardLink.href = `/dashboard?accessKey=${accessKey}`;
+                        dashboardLink.textContent = 'Déjà commandé ? Voir votre commande';
+                        alert('Commande soumise avec succès. Redirection en cours...');
+                        window.location.href = 'merci.html';
+                    } else {
+                        alert('Erreur lors de la soumission de la commande.');
+                    }
+                } catch (error) {
+                    console.error('Erreur:', error);
+                    alert('Erreur lors de la soumission de la commande.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+>>>>>>> f5afb80 (Ajout et modification de fichiers)

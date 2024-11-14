@@ -43,6 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
+<<<<<<< HEAD
+=======
+                alert('Commande soumise avec succes redirection en cours...')
+>>>>>>> f5afb80 (Ajout et modification de fichiers)
                 window.location.href = 'merci.html';
             } else {
                 alert('Erreur lors de la soumission de la commande.');
