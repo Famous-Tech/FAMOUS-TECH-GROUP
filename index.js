@@ -37,8 +37,9 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// Limiter la taille maximale des paquets à 200 Ko
+app.use(express.json({ limit: '200kb' }));
+app.use(express.urlencoded({ extended: false, limit: '200kb' }));
 
 async function checkDatabaseConnection() {
   const client = new Client({
