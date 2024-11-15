@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Scroll-to-top functionality
     const scrollToTop = document.getElementById('scroll-to-top');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // FAQ toggle functionality
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Order form submission functionality
     const orderForm = document.getElementById('orderForm');
     orderForm.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -43,10 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-<<<<<<< HEAD
-=======
-                alert('Commande soumise avec succes redirection en cours...')
->>>>>>> f5afb80 (Ajout et modification de fichiers)
+                alert('Commande soumise avec succès, redirection en cours...');
                 window.location.href = 'merci.html';
             } else {
                 alert('Erreur lors de la soumission de la commande.');
