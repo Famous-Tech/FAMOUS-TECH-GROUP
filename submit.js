@@ -1,20 +1,17 @@
-<<<<<<< HEAD
-// submit.js
-const { Client } = require('pg');
-=======
 const { Client } = require('pg');
 const Joi = require('joi');
 const crypto = require('crypto');
 
+// Schéma Joi pour valider les données du formulaire
 const schema = Joi.object({
     name: Joi.string().required(),
     email: Joi.string().email().required(),
     service: Joi.string().required(),
     details: Joi.string().required()
 });
->>>>>>> f5afb80 (Ajout et modification de fichiers)
 
 exports.handler = async (event) => {
+    // Vérifier que la méthode HTTP est bien POST
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
@@ -22,21 +19,10 @@ exports.handler = async (event) => {
         };
     }
 
+    // Récupérer les données du formulaire
     const formData = JSON.parse(event.body);
 
-<<<<<<< HEAD
-    const { name, email, service, details } = formData;
-
-    if (!name || !email || !service || !details) {
-        return {
-            statusCode: 400,
-            body: 'Invalid input'
-        };
-    }
-
-    const client = new Client({
-        connectionString: process.env.POSTGRES_URL,
-=======
+    // Valider les données du formulaire
     const { error } = schema.validate(formData);
     if (error) {
         return {
@@ -49,7 +35,6 @@ exports.handler = async (event) => {
 
     const client = new Client({
         connectionString: process.env.DATABASE_URL,
->>>>>>> f5afb80 (Ajout et modification de fichiers)
         ssl: {
             rejectUnauthorized: false
         }
@@ -58,24 +43,16 @@ exports.handler = async (event) => {
     try {
         await client.connect();
 
-<<<<<<< HEAD
-        const query = 'INSERT INTO commandes (nom, email, service, details) VALUES ($1, $2, $3, $4)';
-        await client.query(query, [name, email, service, details]);
-
-        return {
-            statusCode: 200,
-            body: 'Order submitted successfully'
-=======
         // Générer une clé d'accès unique
         const accessKey = crypto.randomBytes(16).toString('hex');
 
+        // Insérer la commande dans la base de données
         const query = 'INSERT INTO commandes (nom, email, service, details, access_key) VALUES ($1, $2, $3, $4, $5)';
         await client.query(query, [name, email, service, details, accessKey]);
 
         return {
             statusCode: 200,
             body: JSON.stringify({ message: 'Order submitted successfully', accessKey })
->>>>>>> f5afb80 (Ajout et modification de fichiers)
         };
     } catch (error) {
         console.error('Error:', error);
@@ -86,8 +63,4 @@ exports.handler = async (event) => {
     } finally {
         await client.end();
     }
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> f5afb80 (Ajout et modification de fichiers)
