@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-// admin.js
-const { Client } = require('pg');
-const fs = require('fs');
-
-exports.handler = async (event) => {
-=======
 const { Client } = require('pg');
 const fs = require('fs');
 const path = require('path');
 
 exports.handler = async (event) => {
+    // Vérifier que la méthode HTTP est bien GET
     if (event.httpMethod !== 'GET') {
         return {
             statusCode: 405,
@@ -17,7 +11,6 @@ exports.handler = async (event) => {
         };
     }
 
->>>>>>> f5afb80 (Ajout et modification de fichiers)
     const client = new Client({
         connectionString: process.env.DATABASE_URL,
         ssl: {
@@ -28,49 +21,7 @@ exports.handler = async (event) => {
     try {
         await client.connect();
 
-<<<<<<< HEAD
         // Récupérer les commandes depuis la base de données
-        const ordersQuery = 'SELECT * FROM commandes';
-        const ordersResult = await client.query(ordersQuery);
-        const orders = ordersResult.rows.map(row => ({
-            id: row.id,
-            nom: row.nom,
-            email: row.email,
-            service: row.service,
-            details: row.details,
-            date_commande: row.date_commande
-        }));
-
-        // Récupérer les commandes depuis le fichier JSON
-        let jsonOrders = [];
-        if (fs.existsSync('commandes.json')) {
-            const jsonData = fs.readFileSync('commandes.json', 'utf8');
-            const jsonCommands = jsonData.split('\n').filter(line => line.trim() !== '');
-            jsonOrders = jsonCommands.map(jsonCommand => JSON.parse(jsonCommand));
-        }
-
-        // Récupérer les statistiques des visiteurs depuis le fichier JSON
-        let visitorsData = [];
-        if (fs.existsSync('visitors.json')) {
-            const jsonData = fs.readFileSync('visitors.json', 'utf8');
-            const jsonVisitors = jsonData.split('\n').filter(line => line.trim() !== '');
-            visitorsData = jsonVisitors.map(jsonVisitor => JSON.parse(jsonVisitor));
-        }
-
-        return {
-            statusCode: 200,
-            body: JSON.stringify({
-                commandes: [...orders, ...jsonOrders],
-                visitors: visitorsData
-            })
-        };
-    } catch (error) {
-        console.error('Error:', error);
-        return {
-            statusCode: 500,
-            body: 'Error retrieving data'
-=======
-        // Récupérer les commandes
         const commandesResult = await client.query('SELECT * FROM commandes');
         const commandes = commandesResult.rows;
         console.log('Commandes récupérées:', commandes);
@@ -80,8 +31,6 @@ exports.handler = async (event) => {
         const visitorsData = fs.readFileSync(visitorsFilePath, 'utf8');
         const visitors = JSON.parse(visitorsData);
         console.log('Visiteurs récupérés:', visitors);
-
-        await client.end();
 
         // Générer le HTML dynamiquement
         const html = `
@@ -231,9 +180,10 @@ exports.handler = async (event) => {
                     document.querySelectorAll('.update-button').forEach(button => {
                         button.addEventListener('click', async () => {
                             const id = button.getAttribute('data-id');
-                    // Correction des sélecteurs en enlevant les espaces
-                    const statusSelect = document.querySelector(\`.status-select[data-id="\${id}"]\`);
-                    const messageInput = document.querySelector(\`.message-input[data-id="\${id}"]\`);
+                            const statusSelect = document.querySelector(\`.status-select[data-id="\${id}"]\`);
+                            const messageInput = document.querySelector(\`.message-input[data-id="\${id}"]\`);
+                            const status = statusSelect.value;
+                            const message = messageInput.value;
 
                             try {
                                 const response = await fetch('/api/update-commande', {
@@ -272,13 +222,8 @@ exports.handler = async (event) => {
         return {
             statusCode: 500,
             body: 'Erreur lors de la récupération des données'
->>>>>>> f5afb80 (Ajout et modification de fichiers)
         };
     } finally {
         await client.end();
     }
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> f5afb80 (Ajout et modification de fichiers)
